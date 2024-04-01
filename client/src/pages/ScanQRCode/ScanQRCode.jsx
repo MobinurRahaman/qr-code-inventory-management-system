@@ -67,7 +67,10 @@ export default function ScanQRCode() {
             navigate("/");
           })
           .catch((err) => {
-            setError(err.response?.data?.message || "Server error"); // Set error state based on server response
+            setError(
+              err.response?.data?.message ||
+                "Failed to submit invoice due to a server error."
+            ); // Set error state based on server response
           })
           .finally(() => {
             setIsLoading(false);
@@ -87,11 +90,7 @@ export default function ScanQRCode() {
           Submitting the invoice to the server...
         </h4>
       )}
-      {error && (
-        <h4 className="errorMessage">
-          Failed to submit invoice due to a server error.
-        </h4>
-      )}
+      {error && <h4 className="errorMessage">{error}</h4>}
     </div>
   );
 }
