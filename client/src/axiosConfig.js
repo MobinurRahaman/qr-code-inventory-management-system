@@ -4,7 +4,7 @@ import axios from "axios";
 const token = localStorage.getItem("token");
 
 const instance = axios.create({
-  baseURL: "http://localhost:8000/api", // backend URL
+  baseURL: process.env.REACT_APP_API_BASE_URL, // backend URL
   timeout: 10000,
   headers: {
     "Content-Type": "application/json", // Set default headers
