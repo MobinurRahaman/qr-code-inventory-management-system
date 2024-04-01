@@ -1,0 +1,15 @@
+.back_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.back_btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}

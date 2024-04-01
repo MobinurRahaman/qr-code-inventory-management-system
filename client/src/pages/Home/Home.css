@@ -1,0 +1,75 @@
+.invoiceTable {
+  width: 100%;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.invoiceTable th {
+  font-weight: bold;
+}
+
+.qrImg {
+  width: 150px;
+  height: 150px;
+}
+
+.adminPanelBtnWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.adminBtn {
+  cursor: pointer;
+}
+
+/* Mobile screen layout */
+
+.mobileInvoiceWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoiceItems {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4em;
+}
+
+.invoiceItem {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.invoiceItemHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invoiceItemQRCode {
+  margin-bottom: 1rem;
+}
+
+.mobile_admin_panel_btn_wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .qrImg {
+    width: 100px;
+    height: 100px;
+  }
+}

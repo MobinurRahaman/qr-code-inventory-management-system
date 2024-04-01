@@ -1,0 +1,15 @@
+.select {
+  width: 100%;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+}
+
+.select option {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}

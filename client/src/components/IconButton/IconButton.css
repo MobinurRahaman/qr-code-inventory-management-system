@@ -1,0 +1,33 @@
+.iconBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.iconBtn:enabled:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.iconBtn.contained {
+  background-color: #6b6b6b;
+}
+
+.iconBtn.contained:enabled:hover {
+  background-color: #424242;
+}
+
+.iconBtn:disabled {
+  -webkit-filter: brightness(0.5); /* Safari */
+  filter: brightness(0.5);
+  cursor: not-allowed;
+}
+
+.iconBtn.square {
+  border-radius: 4px;
+}

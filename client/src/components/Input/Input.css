@@ -1,0 +1,31 @@
+.label {
+  font-size: 1.4em;
+}
+
+.input {
+  width: 100%;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+}
+
+.input:focus {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.input[type="submit"] {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.input[type="submit"]:hover {
+  -webkit-filter: brightness(0.8); /* Safari */
+  filter: brightness(0.8);
+}

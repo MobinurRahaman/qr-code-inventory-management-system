@@ -1,0 +1,88 @@
+.header_nav {
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  z-index: 998;
+}
+
+.app_name {
+  font-size: 1.6em;
+}
+
+.app_name > a {
+  text-decoration: none; /* Remove underline from app name having link */
+  color: #fff;
+}
+
+.qrCodeLinkWrapper {
+  margin: 15px 0;
+  display: flex;
+  gap: 1.6em;
+  font-size: 1.4em;
+}
+
+.qrCodeLinkWrapper.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.qrCodeLinkWrapper > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.qrCodeLinkWrapper.column > a {
+  padding: 10px 20px;
+  text-align: center;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.qrCodeLinkWrapper.column > a:hover {
+  -webkit-filter: brightness(0.8); /* Safari */
+  filter: brightness(0.8);
+}
+
+.auth_buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth_buttons.column {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth_btn {
+  padding: 10px 20px;
+  font-size: 1.4em;
+  text-align: center;
+  background-color: var(--secondary-color);
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.auth_btn.fullWidth {
+  width: 100%;
+}
+
+.auth_btn:hover {
+  background-color: var(--secondary-color);
+  -webkit-filter: brightness(0.8); /* Safari */
+  filter: brightness(0.8);
+}

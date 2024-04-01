@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(
+    0,
+    0,
+    0,
+    0
+  ); /* Disable tap highlight color */
+}
+
+.successStatus,
+.errorStatus,
+.successMessage,
+.errorMessage,
+.loadingMessage {
+  font-size: 1.4em;
+  text-align: center;
+  color: #fff;
+}
+
+.successStatus,
+.successMessage {
+  color: var(--success-color);
+}
+
+.errorStatus,
+.errorMessage {
+  color: var(--error-color);
+}
