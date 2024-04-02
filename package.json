@@ -17,6 +17,7 @@
     "start": "concurrently \"yarn run start:server\" \"yarn run start:client\"",
     "start:dev": "concurrently \"yarn run start:server:dev\" \"yarn run start:client:dev\"",
     "build-client": "yarn workspace @qr-code-inventory-management-system/client build",
+    "deploy": "yarn run build-client && yarn run start:server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
