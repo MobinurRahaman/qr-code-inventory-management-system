@@ -15,7 +15,7 @@ router.post("/", authController.protect, inventoryController.createInventory);
 router.get("/:id", inventoryController.getInventoryById);
 
 // Route to handle PUT requests for updating an existing inventory
-router.put("/:id", authController.protect, inventoryController.updateInventory);
+router.put("/:id", inventoryController.updateInventory);
 
 // Route to handle DELETE requests for deleting an inventory by its ID
 router.delete(
