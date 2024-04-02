@@ -66,11 +66,21 @@ Clone the project
 git clone https://github.com/MobinurRahaman/qr-code-inventory-management-system
 ```
 
+```bash
+cd qr-code-inventory-management-system
+```
+
 Install dependencies
 
 ```bash
 yarn install
 ```
+
+```bash
+yarn add -D concurrently -W
+```
+
+Add .env files in both client/ and server/ directories as described in the [Environment Variables](https://github.com/MobinurRahaman/qr-code-inventory-management-system?tab=readme-ov-file#key-environment-variables) section
 
 Start the server
 
