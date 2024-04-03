@@ -122,6 +122,7 @@ exports.verifyToken = catchAsync(async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
     req.userId = decoded.userId;
 
     res.status(200).json({
@@ -131,8 +132,18 @@ exports.verifyToken = catchAsync(async (req, res, next) => {
       user_id: decoded.userId,
     });
   } catch (error) {
-    console.error(error);
-    return res.status(401).json({ message: "Invalid token" });
+    if (error.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ message: "Token has expired. Please login to continue." });
+    } else if (error.name === "JsonWebTokenError") {
+      return res
+        .status(401)
+        .json({ message: "Invalid token. Please log in again." });
+    } else {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
   }
 });
 
@@ -155,6 +166,7 @@ exports.protect = catchAsync(async (req, res, next) => {
         message: "You are not logged in! Please log in to get access.",
       });
     }
+
     // Verifying the JWT token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
@@ -171,6 +183,17 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.user = this_user;
     next();
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (error.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ message: "Token has expired. Please login to continue." });
+    } else if (error.name === "JsonWebTokenError") {
+      return res
+        .status(401)
+        .json({ message: "Invalid token. Please log in again." });
+    } else {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
   }
 });
