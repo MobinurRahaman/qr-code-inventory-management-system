@@ -112,6 +112,19 @@ exports.updateInventory = catchAsync(async (req, res) => {
     // Update dispatched_date if provided
     if (filteredBody.dispatched_date) {
       inventory.date.dispatched_date = filteredBody.dispatched_date;
+
+      // Increase dispatched_quantity by 1 if not already dispatched
+      if (
+        inventory.quantity.received_quantity >
+        inventory.quantity.dispatched_quantity
+      ) {
+        inventory.quantity.dispatched_quantity =
+          inventory.quantity.dispatched_quantity + 1;
+      } else {
+        return res
+          .status(400)
+          .json({ message: "This item has already been dispatched" });
+      }
     }
 
     // Update quantity if provided

@@ -9,7 +9,7 @@ const inventoryController = require("../controllers/inventoryController");
 router.get("/", inventoryController.getAllInventories);
 
 // Route to handle POST requests for creating a new inventory
-router.post("/", authController.protect, inventoryController.createInventory);
+router.post("/", inventoryController.createInventory);
 
 // Route to handle GET requests for retrieving an inventory by its ID
 router.get("/:id", inventoryController.getInventoryById);

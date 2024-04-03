@@ -60,8 +60,6 @@ export default function ScanQRCode() {
         axiosInstance
           .put(`/inventory/${data._id}`, {
             dispatched_date: getCurrentDate(),
-            dispatched_quantity:
-              parseInt(data.quantity.dispatched_quantity) + 1,
           })
           .then(() => {
             navigate("/");

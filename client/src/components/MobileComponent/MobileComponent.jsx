@@ -16,10 +16,9 @@ const LazyQRCodeCell = React.lazy(() => import("../QRCodeCell/QRCodeCell"));
  * @param {Function} props.setData - Function to update invoice items data.
  * @param {boolean} props.isLoading - Flag indicating if data is being loaded.
  * @param {string} props.error - Error message, if any.
- * @param {boolean} props.isLoggedIn - Flag indicating if user is logged in.
  * @returns {JSX.Element} MobileComponent.
  */
-function MobileComponent({ data, setData, isLoading, error, isLoggedIn }) {
+function MobileComponent({ data, setData, isLoading, error }) {
   const navigate = useNavigate();
 
   /**
@@ -41,7 +40,7 @@ function MobileComponent({ data, setData, isLoading, error, isLoggedIn }) {
         setData(data.filter((item) => item._id !== id));
       })
       .catch(() => {
-        alert("Failed to delete item");
+        navigate("/login");
       });
   };
 
@@ -105,7 +104,6 @@ function MobileComponent({ data, setData, isLoading, error, isLoggedIn }) {
                   title="Edit"
                   aria-label="Edit"
                   icon={editIcon}
-                  disabled={!isLoggedIn}
                   onClick={() => handleEdit(item._id)}
                 />
                 <IconButton
@@ -115,7 +113,6 @@ function MobileComponent({ data, setData, isLoading, error, isLoggedIn }) {
                   title="Delete"
                   aria-label="Delete"
                   icon={deleteIcon}
-                  disabled={!isLoggedIn}
                   onClick={() => handleDelete(item._id)}
                 />
               </div>
@@ -132,7 +129,6 @@ MobileComponent.propTypes = {
   setData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string,
-  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 /**

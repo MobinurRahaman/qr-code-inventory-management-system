@@ -13,12 +13,11 @@ const QRCodeCell = lazy(() => import("../QRCodeCell/QRCodeCell"));
  * Component for rendering a single row in the table.
  * @param {object} props - Component props.
  * @param {object} props.item - The item data for the row.
- * @param {boolean} props.isLoggedIn - Indicates whether the user is logged in.
  * @param {Function} props.handleEdit - Function to handle editing an item.
  * @param {Function} props.handleDelete - Function to handle deleting an item.
  * @returns {JSX.Element} Rendered table row component.
  */
-function TableRow({ item, isLoggedIn, handleEdit, handleDelete }) {
+function TableRow({ item, handleEdit, handleDelete }) {
   return (
     <tr key={item._id}>
       <td>{item.name}</td>
@@ -56,7 +55,6 @@ function TableRow({ item, isLoggedIn, handleEdit, handleDelete }) {
             title="Edit"
             aria-label="Edit"
             icon={editIcon}
-            disabled={!isLoggedIn}
             onClick={() => handleEdit(item._id)}
           />
           <IconButton
@@ -66,7 +64,6 @@ function TableRow({ item, isLoggedIn, handleEdit, handleDelete }) {
             title="Delete"
             aria-label="Delete"
             icon={deleteIcon}
-            disabled={!isLoggedIn}
             onClick={() => handleDelete(item._id)}
           />
         </div>
@@ -77,7 +74,6 @@ function TableRow({ item, isLoggedIn, handleEdit, handleDelete }) {
 
 TableRow.propTypes = {
   item: PropTypes.object.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
   handleEdit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
@@ -89,10 +85,9 @@ TableRow.propTypes = {
  * @param {Function} props.setData - Function to update the data array.
  * @param {boolean} props.isLoading - Indicates whether the data is loading.
  * @param {string} props.error - The error message, if any.
- * @param {boolean} props.isLoggedIn - Indicates whether the user is logged in.
  * @returns {JSX.Element} Rendered table component.
  */
-function TableComponent({ data, setData, isLoading, error, isLoggedIn }) {
+function TableComponent({ data, setData, isLoading, error }) {
   const navigate = useNavigate();
 
   const handleEdit = (id) => {
@@ -106,7 +101,7 @@ function TableComponent({ data, setData, isLoading, error, isLoggedIn }) {
         setData(data.filter((item) => item._id !== id));
       })
       .catch(() => {
-        alert("Failed to delete item");
+        navigate("/login");
       });
   };
 
@@ -131,7 +126,6 @@ function TableComponent({ data, setData, isLoading, error, isLoggedIn }) {
             <TableRow
               key={item._id}
               item={item}
-              isLoggedIn={isLoggedIn}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
             />
@@ -147,7 +141,6 @@ TableComponent.propTypes = {
   setData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string,
-  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default TableComponent;

@@ -6,12 +6,14 @@ import IconButton from "../../components/IconButton/IconButton";
 import backIcon from "../../assets/arrow_back_ios_new.svg";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
+import { useAuth } from "../../context/AuthContext";
 
 /**
  * Component for editing inventory items.
  * @returns {JSX.Element} Edit component.
  */
 const Edit = () => {
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -23,6 +25,10 @@ const Edit = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    !isLoggedIn && navigate("/login");
+  }, [isLoggedIn, navigate]);
 
   useEffect(() => {
     axiosInstance
