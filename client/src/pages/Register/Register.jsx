@@ -1,7 +1,7 @@
 import backIcon from "../../assets/arrow_back_ios_new.svg";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig";
 import { useAuth } from "../../context/AuthContext";
 import Card from "../../components/Card/Card";
 import IconButton from "../../components/IconButton/IconButton";

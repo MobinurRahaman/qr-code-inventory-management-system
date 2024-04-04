@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import PropTypes from "prop-types";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
 import IconButton from "../IconButton/IconButton";
@@ -33,14 +33,23 @@ function MobileComponent({ data, setData, isLoading, error }) {
    * Deletes an invoice item.
    * @param {string} id - ID of the invoice item to delete.
    */
+
   const handleDelete = (id) => {
+    // Get token from local storage
+    const token = localStorage.getItem("token");
+
     axiosInstance
-      .delete(`/inventory/${id}`)
+      .delete(`/inventory/${id}`, { token })
       .then(() => {
         setData(data.filter((item) => item._id !== id));
       })
-      .catch(() => {
-        navigate("/login");
+      .catch((err) => {
+        // If the token is expired or invalid
+        if (err.response.status === 401) {
+          navigate("/login");
+        } else {
+          alert(err.response.data.message);
+        }
       });
   };
 

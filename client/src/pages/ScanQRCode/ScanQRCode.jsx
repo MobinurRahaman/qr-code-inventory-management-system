@@ -1,6 +1,6 @@
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useState, useEffect, useRef, useCallback } from "react";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
 /**

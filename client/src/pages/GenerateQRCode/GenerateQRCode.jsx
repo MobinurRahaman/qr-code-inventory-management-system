@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import IconButton from "../../components/IconButton/IconButton";

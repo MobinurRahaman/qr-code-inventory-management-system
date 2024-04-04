@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import axiosInstance from "../axiosConfig";
+import axiosInstance from "../config/axiosConfig";
 
 export const AuthContext = createContext();
 
@@ -18,8 +18,11 @@ const AuthProvider = ({ children }) => {
   // Auto login on app startup if token is available
   useEffect(() => {
     if (!isLoggedIn) {
+      // Get token from local storage
+      const token = localStorage.getItem("token");
+
       axiosInstance
-        .post("/auth/verify")
+        .post("/auth/verify", { token })
         .then((res) => {
           setLogin(res.data);
         })

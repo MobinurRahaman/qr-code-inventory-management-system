@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import formatDate from "../../utils/formatDate";
@@ -95,13 +95,21 @@ function TableComponent({ data, setData, isLoading, error }) {
   };
 
   const handleDelete = (id) => {
+    // Get token from local storage
+    const token = localStorage.getItem("token");
+
     axiosInstance
-      .delete(`/inventory/${id}`)
+      .delete(`/inventory/${id}`, { token })
       .then(() => {
         setData(data.filter((item) => item._id !== id));
       })
-      .catch(() => {
-        navigate("/login");
+      .catch((err) => {
+        // If the token is expired or invalid
+        if (err.response.status === 401) {
+          navigate("/login");
+        } else {
+          alert(err.response.data.message);
+        }
       });
   };
 

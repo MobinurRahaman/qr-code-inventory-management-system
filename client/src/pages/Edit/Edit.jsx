@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import IconButton from "../../components/IconButton/IconButton";
@@ -31,8 +31,11 @@ const Edit = () => {
   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
+    // Get token from local storage
+    const token = localStorage.getItem("token");
+
     axiosInstance
-      .get(`/inventory/${id}`)
+      .get(`/inventory/${id}`, { token })
       .then((res) => {
         setFormData({
           name: res.data.name,

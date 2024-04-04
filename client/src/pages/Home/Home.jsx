@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { useAuth } from "../../context/AuthContext";
-import axiosInstance from "../../axiosConfig";
+import axiosInstance from "../../config/axiosConfig.js";
 import useWindowWidth from "../../hooks/useWindowWidth.js";
 import "./Home.css";
 const LazyTableComponent = lazy(() =>
