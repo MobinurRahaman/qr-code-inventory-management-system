@@ -10,10 +10,19 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
+- [Environment Variables](#key-environment-variables)
+  - [Client](#client-client)
+  - [Server](#server-server)
+- [Getting Started](#toolbox-getting-started)
+  - [Installation](#gear-installation)
+  - [Run Locally](#running-run-locally)
+- [Deployment](#triangular_flag_on_post-deployment)
 
 ## :star2: About the Project
 
-### :key: Environment Variables
+Revolutionize your inventory management with our QR Code Inventory Management System. Easily track and manage your inventory by scanning QR codes. Streamline your operations, minimize errors, and increase efficiency.
+
+## :key: Environment Variables
 
 ### Client (client/)
 
@@ -41,6 +50,10 @@ JWT_SECRET=your-jwt-secret
 Replace `your-mongo-db-uri` with the actual connection URI for your MongoDB database, and `your-jwt-secret` with the secret key you want to use for JWT signing.
 
 **Note**: An example .env file is provided as .env.example in both the client/ and server/ directories. Make sure not to commit your `.env` files with sensitive information to your version control system.
+
+## :receipt: Schema Diagram
+
+![Schema Diagram](https://github.com/MobinurRahaman/qr-code-inventory-management-system/blob/main/resources/Schema-Diagram.png)
 
 ## :toolbox: Getting Started
 
@@ -88,7 +101,7 @@ Start the server
 yarn run start:dev
 ```
 
-### :triangular_flag_on_post: Deployment
+## :triangular_flag_on_post: Deployment
 
 To deploy this project run
 
